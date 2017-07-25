@@ -6,7 +6,7 @@ module AlexaRubykit
   class Request
     require 'json'
     require 'alexa_rubykit/session'
-    attr_accessor :version, :type, :session, :json # global
+    attr_accessor :version, :type, :session, :json, :dialog_state# global
     attr_accessor :request_id, :locale # on request
 
     def initialize(json_request)
@@ -15,6 +15,7 @@ module AlexaRubykit
       @version = json_request['version']
       @locale = json_request['request']['locale']
       @json   = json_request
+      @dialog_state = json_request['request']['dialogState']
 
       # TODO: We probably need better session handling.
       @session = AlexaRubykit::Session.new(json_request['session'])
