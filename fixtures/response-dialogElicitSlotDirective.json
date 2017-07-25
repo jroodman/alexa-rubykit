@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "response": {
+    "directives": [
+      {
+        "type": "Dialog.ElicitSlot",
+        "slotToElicit": "City",
+        "updatedIntent": {
+          "name": "GetZodiacHoroscopeIntent",
+          "confirmationStatus": "NONE",
+          "slots": {
+            "City": {
+              "name": "City",
+              "confirmationStatus": "NONE"
+            },
+            "ZodiacSign": {
+              "name": "ZodiacSign",
+              "value": "virgo",
+              "confirmationStatus": "NONE"
+            }
+          }
+        }
+      }
+    ],
+  "shouldEndSession" :true
+  }
+}

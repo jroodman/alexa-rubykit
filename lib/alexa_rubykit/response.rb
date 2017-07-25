@@ -24,7 +24,7 @@ module AlexaRubykit
       end
       @speech
     end
-    
+
     def add_audio_url(url, token='', offset=0)
       @directives << {
         'type' => 'AudioPlayer.Play',
@@ -39,6 +39,36 @@ module AlexaRubykit
       }
     end
 
+    def add_dialog_delegate_directive(intent:)
+      @directives << {
+        'type' => 'Dialog.Delegate',
+        'updatedIntent': intent
+      }
+    end
+
+    def add_dialog_elicit_slot_directive(slot_to_elicit:, intent:)
+      @directives << {
+        'type' => 'Dialog.ElicitSlot',
+        'slotToElicit': slot_to_elicit,
+        'updatedIntent': intent
+      }
+    end
+
+    def add_dialog_confirm_slot_directive(slot_to_confirm:, intent:)
+      @directives << {
+        'type' => 'Dialog.ConfirmSlot',
+        'slotToConfirm': slot_to_confirm,
+        'updatedIntent': intent
+      }
+    end
+
+    def add_dialog_confirm_intent_directive(intent:)
+      @directives << {
+        'type' => 'Dialog.ConfirmIntent',
+        'updatedIntent': intent
+      }
+    end
+
     def add_reprompt(speech_text, ssml = false)
       if ssml
         @reprompt = { "outputSpeech" => { :type => 'SSML', :ssml => check_ssml(speech_text) } }
@@ -48,7 +78,6 @@ module AlexaRubykit
       @reprompt
     end
 
-    #
     #"type": "string",
     #    "title": "string",
     #    "subtitle": "string",

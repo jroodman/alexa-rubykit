@@ -1,0 +1,15 @@
+{
+  "name": "GetZodiacHoroscopeIntent",
+  "confirmationStatus": "NONE",
+  "slots": {
+    "City": {
+      "name": "City",
+      "confirmationStatus": "NONE"
+    },
+    "ZodiacSign": {
+      "name": "ZodiacSign",
+      "value": "virgo",
+      "confirmationStatus": "NONE"
+    }
+  }
+}

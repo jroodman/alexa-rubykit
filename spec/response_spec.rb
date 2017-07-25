@@ -113,7 +113,7 @@ describe 'Builds appropriate response objects' do
     sample_json = JSON.parse(File.read('fixtures/response-sessionAtt.json')).to_json
     expect(response_json).to eq(sample_json)
   end
-  
+
   it 'should create a valid response with an audio stream directive' do
     response = AlexaRubykit::Response.new
     response.add_audio_url('http://test/url.mp3','token',100)
@@ -122,5 +122,49 @@ describe 'Builds appropriate response objects' do
     sample_json = JSON.parse(File.read('fixtures/response-sessionAudio.json')).to_json
     expect(response_json).to eq(sample_json)
   end
+
+  it 'should create a valid response with a dialog delegate directive' do
+    response = AlexaRubykit::Response.new
+    intent = JSON.parse(File.read('fixtures/sample-Intent.json'))
+    response.add_dialog_delegate_directive(intent: intent)
+    response.build_response_object
+    response_json = response.build_response
+    sample_json = JSON.parse(File.read('fixtures/response-dialogDelegateDirective.json')).to_json
+    expect(response_json).to eq(sample_json)
+  end
+
+  it 'should create a valid response with a dialog confirm intent directive' do
+    response = AlexaRubykit::Response.new
+    intent = JSON.parse(File.read('fixtures/sample-Intent.json'))
+    response.add_dialog_confirm_intent_directive(intent: intent)
+    response.build_response_object
+    response_json = response.build_response
+    sample_json = JSON.parse(File.read('fixtures/response-dialogConfirmIntentDirective.json')).to_json
+    expect(response_json).to eq(sample_json)
+  end
+
+  it 'should create a valid response with a dialog confirm slot directive' do
+    response = AlexaRubykit::Response.new
+    intent = JSON.parse(File.read('fixtures/sample-Intent.json'))
+    response.add_dialog_confirm_slot_directive(slot_to_confirm: 'ZodiacSign', intent: intent)
+    response.build_response_object
+    response_json = response.build_response
+    sample_json = JSON.parse(File.read('fixtures/response-dialogConfirmSlotDirective.json')).to_json
+    puts ''
+    puts response_json
+    puts sample_json
+    expect(response_json).to eq(sample_json)
+  end
+
+  it 'should create a valid response with a dialog elicit slot directive' do
+    response = AlexaRubykit::Response.new
+    intent = JSON.parse(File.read('fixtures/sample-Intent.json'))
+    response.add_dialog_elicit_slot_directive(slot_to_elicit: 'City', intent: intent)
+    response.build_response_object
+    response_json = response.build_response
+    sample_json = JSON.parse(File.read('fixtures/response-dialogElicitSlotDirective.json')).to_json
+    expect(response_json).to eq(sample_json)
+  end
+
 
 end
