@@ -42,30 +42,30 @@ module AlexaRubykit
     def add_dialog_delegate_directive(intent:)
       @directives << {
         'type' => 'Dialog.Delegate',
-        'updatedIntent': intent
+        'updatedIntent' => intent
       }
     end
 
     def add_dialog_elicit_slot_directive(slot_to_elicit:, intent:)
       @directives << {
         'type' => 'Dialog.ElicitSlot',
-        'slotToElicit': slot_to_elicit,
-        'updatedIntent': intent
+        'slotToElicit' => slot_to_elicit,
+        'updatedIntent' => intent
       }
     end
 
     def add_dialog_confirm_slot_directive(slot_to_confirm:, intent:)
       @directives << {
         'type' => 'Dialog.ConfirmSlot',
-        'slotToConfirm': slot_to_confirm,
-        'updatedIntent': intent
+        'slotToConfirm' => slot_to_confirm,
+        'updatedIntent' => intent
       }
     end
 
     def add_dialog_confirm_intent_directive(intent:)
       @directives << {
         'type' => 'Dialog.ConfirmIntent',
-        'updatedIntent': intent
+        'updatedIntent' => intent
       }
     end
 
